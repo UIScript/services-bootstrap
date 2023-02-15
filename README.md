@@ -1,8 +1,8 @@
 # Services Bootstrap
-A Promise-based, anti-race condition-based, configuration-based service bootstrap
+A lightweight, Promise-based services bootstrap with configuration-per-service to easily switch between test and live builds, setup (non-)mandatory services, and avoid race conditions.
 
 # Documentation
-TODO. Read `ServiceBootstrap.lua`/`init.lua` for documentation.
+TODO. Read `Bootstrap.lua`/`init.lua` for documentation.
 
 # Installation
 wally:
