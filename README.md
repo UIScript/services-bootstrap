@@ -6,11 +6,19 @@ Originally inspired by [Knit by sleitnick](https://sleitnick.github.io/Knit/) bu
 # Documentation
 TODO. Read `Bootstrap.lua`/`init.lua` for documentation.
 
+# Dependencies
+[Promise by evaera](https://eryn.io/roblox-lua-promise/)
+
 # Installation
 wally:
 ```
 Bootstrap = "uiscript/services-bootstrap@1.1.0"
 ```
+ROBLOX (recommended structure):
+Bootstrap = ReplicatedStorage.Packages.Bootstrap
+Promise = ReplicatedStorage.Packages.Promise
+ServerServicesDirectory = ServerScriptService.Services
+ClientServicesDirectory = StarterPlayerScripts.Services
 
 # Example Usage
 Server:
