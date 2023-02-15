@@ -91,8 +91,6 @@ local function StartServices()
             local service = require(moduleScript)
             service[method]()
             service[method] = nil
-
-            return service
         end)
     end
 
@@ -119,7 +117,7 @@ local function StartServices()
                                 table.remove(sortedModules, moduleIndex)
     
                                 if (method == "Initialize" and Bootstrap.Services[serviceName]["REJECT_ON_INITIALIZE_ERROR"] == true) or (method == "Start" and Bootstrap.Services[serviceName]["REJECT_ON_START_ERROR"] == true) then
-                                    reject(serviceName.. " failed to " ..string.lower(method).. ":\n" ..runServiceResponse)
+                                    reject(runServiceResponse)
                                     return
                                 end
                             end
@@ -134,7 +132,7 @@ local function StartServices()
                         table.remove(sortedModules, moduleIndex)
                         
                         if (method == "Initialize" and Bootstrap.Services[serviceName]["REJECT_ON_INITIALIZE_ERROR"] == true) or (method == "Start" and Bootstrap.Services[serviceName]["REJECT_ON_START_ERROR"] == true) then
-                            return Promise.reject(serviceName.. " failed to " ..string.lower(method).. ":\n" ..runServiceResponse)
+                            return Promise.reject(runServiceResponse)
                         end
                     elseif runServiceSuccess == true then
                         table.insert(servicePromises, Promise.resolve())
@@ -175,32 +173,15 @@ local function StartServices()
 end
 
 -- server starter
-Bootstrap.Start = function(bootstrapSettings)
-    bootstrapSettings = bootstrapSettings or {}
-
-    assert(typeof(bootstrapSettings) == "table", "Failed to start services bootstrap (bootstrapSettings is not a valid table, got " ..typeof(bootstrapSettings).. ")")
-    assert(typeof(bootstrapSettings.ServicesDirectory) == "Instance", "Failed to start services bootstrap (bootstrapSettings.ServicesDirectory is not a valid Instance, got " ..typeof(bootstrapSettings.ServicesDirectory).. ")")
-    assert(typeof(bootstrapSettings.Services) == "table", "Failed to start services bootstrap (bootstrapSettings.Services is not a valid table, got " ..typeof(bootstrapSettings.Services).. ")")
-    if bootstrapSettings.Promise ~= nil then
-        assert(typeof(bootstrapSettings.Promise) == "Instance" or typeof(bootstrapSettings.Promise) == "table", "Failed to start services bootstrap (bootstrapSettings.Promise is not a valid Instance, got " ..typeof(bootstrapSettings.Promise).. ")")
-        if typeof(bootstrapSettings.Promise) == "Instance" then
-            bootstrapSettings.Promise = require(bootstrapSettings.Promise)
-        end
+Bootstrap.Start = function()
+    assert(typeof(Bootstrap.ServicesDirectory) == "Instance", "Failed to start services bootstrap (Bootstrap.ServicesDirectory is not a valid Instance, got " ..typeof(Bootstrap.ServicesDirectory).. ")")
+    assert(typeof(Bootstrap.Services) == "table", "Failed to start services bootstrap (Bootstrap.Services is not a valid table, got " ..typeof(Bootstrap.Services).. ")")
+    assert(typeof(Bootstrap.Promise) == "Instance" or typeof(Bootstrap.Promise) == "table", "Failed to start services bootstrap (Bootstrap.Promise is not a valid Instance, got " ..typeof(Bootstrap.Promise).. ")")
+    if typeof(Bootstrap.Promise) == "Instance" then
+        Bootstrap.Promise = require(Bootstrap.Promise)
     end
-    if bootstrapSettings.ASYNC_INITIALIZE_SERVICES ~= nil then
-        assert(typeof(bootstrapSettings.ASYNC_INITIALIZE_SERVICES) == "boolean", "Failed to start services bootstrap (bootstrapSettings.ASYNC_INITIALIZE_SERVICES is not a valid boolean, got " ..typeof(bootstrapSettings.ASYNC_INITIALIZE_SERVICES).. ")")
-    end
-    if bootstrapSettings.ASYNC_START_SERVICES ~= nil then
-        assert(typeof(bootstrapSettings.ASYNC_START_SERVICES) == "boolean", "Failed to start services bootstrap (bootstrapSettings.ASYNC_START_SERVICES is not a valid boolean, got " ..typeof(bootstrapSettings.ASYNC_START_SERVICES).. ")")
-    end
-
-    Bootstrap.ServicesDirectory = bootstrapSettings.ServicesDirectory
-    Bootstrap.Services = bootstrapSettings.Services
-    Bootstrap.Promise = bootstrapSettings.Promise or Bootstrap.Promise
-    Bootstrap.ASYNC_INITIALIZE_SERVICES = bootstrapSettings.ASYNC_INITIALIZE_SERVICES or Bootstrap.ASYNC_INITIALIZE_SERVICES
-    Bootstrap.ASYNC_START_SERVICES = bootstrapSettings.ASYNC_START_SERVICES or Bootstrap.ASYNC_START_SERVICES
-
-    Bootstrap.Start = nil
+    assert(typeof(Bootstrap.ASYNC_INITIALIZE_SERVICES) == "boolean", "Failed to start services bootstrap (Bootstrap.ASYNC_INITIALIZE_SERVICES is not a valid boolean, got " ..typeof(Bootstrap.ASYNC_INITIALIZE_SERVICES).. ")")
+    assert(typeof(Bootstrap.ASYNC_START_SERVICES) == "boolean", "Failed to start services bootstrap (Bootstrap.ASYNC_START_SERVICES is not a valid boolean, got " ..typeof(Bootstrap.ASYNC_START_SERVICES).. ")")
 
     return StartServices()
 end
