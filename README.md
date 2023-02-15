@@ -1,7 +1,7 @@
 # Services Bootstrap
 A lightweight, Promise-based services bootstrap with configuration-per-service to easily switch between test and live builds, setup (non-)mandatory services, and avoid race conditions.
 
-Originally inspired by [Knit by sleitnick](https://sleitnick.github.io/Knit/) but not constrained to using the framework. It expands upon `Init` and `Start` with priorities and supports Intellisense. I recommend reading [this blod](https://medium.com/@sleitnick/knit-its-history-and-how-to-build-it-better-3100da97b36) by Stephen "sleitnick" himself as I found it very interesting on how his frameworks became to be and pros-and-cons of said frameworks.
+Originally inspired by [Knit by sleitnick](https://sleitnick.github.io/Knit/) but not constrained to using the framework. It expands upon `Init` and `Start` with priorities and supports Intellisense. I recommend reading [this blog](https://medium.com/@sleitnick/knit-its-history-and-how-to-build-it-better-3100da97b36) by Stephen "sleitnick" himself as I found it very interesting on how his frameworks became to be and pros-and-cons of said frameworks.
 
 # Documentation
 TODO. Read `Bootstrap.lua`/`init.lua` for documentation.
