@@ -1,6 +1,9 @@
 # Services Bootstrap
 A Promise-based, anti-race condition-based, configuration-based service bootstrap
 
+# Documentation
+TODO. Read `ServiceBootstrap.lua`/`init.lua` for documentation.
+
 # Installation
 wally:
 ```
