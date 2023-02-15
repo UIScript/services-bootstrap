@@ -7,7 +7,7 @@ TODO. Read `ServiceBootstrap.lua`/`init.lua` for documentation.
 # Installation
 wally:
 ```
-Bootstrap = "uiscript/services-bootstrap@1.0.0"
+Bootstrap = "uiscript/services-bootstrap@1.1.0"
 ```
 
 # Example Usage
