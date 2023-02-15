@@ -10,15 +10,15 @@ TODO. Read `Bootstrap.lua`/`init.lua` for documentation.
 [Promise by evaera](https://eryn.io/roblox-lua-promise/)
 
 # Installation
-wally:
+* wally:
 ```
 Bootstrap = "uiscript/services-bootstrap@1.1.0"
 ```
-ROBLOX (recommended structure):
-Bootstrap = ReplicatedStorage.Packages.Bootstrap
-Promise = ReplicatedStorage.Packages.Promise
-ServerServicesDirectory = ServerScriptService.Services
-ClientServicesDirectory = StarterPlayerScripts.Services
+* ROBLOX (recommended structure):
+> Bootstrap = ReplicatedStorage.Packages.Bootstrap
+> Promise = ReplicatedStorage.Packages.Promise
+> ServerServicesDirectory = ServerScriptService.Services
+> ClientServicesDirectory = StarterPlayerScripts.Services
 
 # Example Usage
 Server:
