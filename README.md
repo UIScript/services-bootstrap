@@ -15,10 +15,12 @@ TODO. Read `Bootstrap.lua`/`init.lua` for documentation.
 Bootstrap = "uiscript/services-bootstrap@1.1.0"
 ```
 * ROBLOX (recommended structure):
-`Bootstrap = ReplicatedStorage.Packages.Bootstrap`
-`Promise = ReplicatedStorage.Packages.Promise`
-`ServerServicesDirectory = ServerScriptService.Services`
-`ClientServicesDirectory = StarterPlayerScripts.Services`
+```lua
+Bootstrap = ReplicatedStorage.Packages.Bootstrap
+Promise = ReplicatedStorage.Packages.Promise
+ServerServicesDirectory = ServerScriptService.Services
+ClientServicesDirectory = StarterPlayerScripts.Services
+```
 
 # Example Usage
 * Server:
