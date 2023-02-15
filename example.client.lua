@@ -5,7 +5,7 @@ local Player = Players.LocalPlayer
 local StarterPlayer = Player:WaitForChild("StarterPlayer")
 local StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts")
 
-local Bootstrap = require(ReplicatedStorage.Packages.ServiceBootstrap)
+local Bootstrap = require(ReplicatedStorage.Packages.Bootstrap)
 Bootstrap.ServicesDirectory = StarterPlayerScripts:WaitForChild("Services")
 Bootstrap.Services = {
     ["ClientDataReceiverService"] = {

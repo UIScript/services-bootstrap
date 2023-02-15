@@ -2,7 +2,7 @@ local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerScriptService = game:GetService("ServerScriptService")
 
-local Bootstrap = require(ReplicatedStorage.Packages.ServiceBootstrap)
+local Bootstrap = require(ReplicatedStorage.Packages.Bootstrap)
 Bootstrap.ServicesDirectory = ServerScriptService.Services
 Bootstrap.Services = {
     ["ClientBanService"] = {
